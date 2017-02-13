@@ -7,9 +7,13 @@
 		create: function(){
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			this.donut = game.add.sprite(100, 245, 'donut');
+			this.donut = game.add.sprite(200, 0, 'donut');
+
+			game.physics.arcade.enable(this.donut);
 
 			game.input.onTap.add(this.playGame, this);
+
+			game.add.tween(this.donut).to({y: 245}, 1000).start();
 		},
 
 		playGame: function(){
@@ -29,7 +33,7 @@
 
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			this.donut = game.add.sprite(100, 245, 'donut');
+			this.donut = game.add.sprite(200, 245, 'donut');
 
 			game.physics.arcade.enable(this.donut);
 
@@ -72,7 +76,7 @@
 		},
 
 		restartGame: function(){
-			game.state.start('main')
+			game.state.start('main');
 		},
 
 		addPipe: function(x, y) {
@@ -82,7 +86,7 @@
 
 			game.physics.arcade.enable(pipe);
 
-			pipe.body.velocity.x = -200; //moving background right to left
+			pipe.body.velocity.x = -300; //moving background right to left
 
 			//removing pipes once the get to end of the canvas
 			pipe.checkWorldBounds = true;
