@@ -1,3 +1,23 @@
+	var mainMenu = {
+		preload: function(){
+			game.stage.backgroundColor = '#71c5cf';
+			game.load.image('donut', 'assets/img/donut.png');
+		},
+
+		create: function(){
+			game.physics.startSystem(Phaser.Physics.ARCADE);
+
+			this.donut = game.add.sprite(100, 245, 'donut');
+
+			game.input.onTap.add(this.playGame, this);
+		},
+
+		playGame: function(){
+			this.game.state.start('main');
+		},	
+
+	}
+
 	var mainState = {
 		preload: function(){
 			game.load.image('donut', 'assets/img/donut.png');
@@ -98,8 +118,7 @@
 	var game = new Phaser.Game(800, 600);
 
 	game.state.add('main', mainState);
+	game.state.add('menu', mainMenu)
 
-	game.state.add()
-
-	game.state.start('main');
+	game.state.start('menu');
 
