@@ -17,6 +17,8 @@
 
 			var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+			this.game.input.onTap.add(this.jump, this);
+
 			spaceKey.onDown.add(this.jump, this);
 
 			this.pipes = game.add.group();
@@ -52,9 +54,14 @@
 
 		addPipe: function(x, y) {
 			var pipe = game.add.sprite(x, y, 'pipe');
+
 			this.pipes.add(pipe);
+
 			game.physics.arcade.enable(pipe);
-			pipe.body.velocity.x = -200;
+
+			pipe.body.velocity.x = -200; //moving background right to left
+
+			//removing pipes once the get to end of the canvas
 			pipe.checkWorldBounds = true;
 			pipe.outOfBoundsKill = true;
 		},
