@@ -17,13 +17,13 @@
 
 			var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-			this.game.input.onTap.add(this.jump, this);
+			game.input.onTap.add(this.jump, this);
 
 			spaceKey.onDown.add(this.jump, this);
 
 			this.pipes = game.add.group();
 
-			this.timer = game.time.events.loop(1500, this.addPipeColumn, this);
+			this.timer = game.time.events.loop(1750, this.addPipeColumn, this);
 
 			this.score = 0; 
 
@@ -35,7 +35,7 @@
 			if (this.donut.y < 0 || this.donut.y > 600)
 				this.restartGame();
 
-			game.physics.arcade.overlap(this.donut, this.pipes, this.restartGame, null, this);
+			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
 			if (this.donut.angle < 15)
 				this.donut.angle += 1;
@@ -46,6 +46,9 @@
 			this.donut.body.velocity.y = -350;
 
 			game.add.tween(this.donut).to({angle: -15}, 100).start();
+
+			if (this.donut.alive == false)
+				return;
 		},
 
 		restartGame: function(){
@@ -77,11 +80,26 @@
 			this.labelScore.text = this.score;
 		},
 
+		hitPipe: function(){
+			if (this.donut.alive == false)
+				return;
+
+			this.donut.alive = false;
+
+			game.time.events.remove(this.timer);
+
+			this.pipes.forEach(function(p){
+				p.body.velocity.x = 0;
+			}, this);
+		},
+
 	};
 
 	var game = new Phaser.Game(800, 600);
 
 	game.state.add('main', mainState);
+
+	game.state.add()
 
 	game.state.start('main');
 
