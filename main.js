@@ -1,5 +1,5 @@
 	var mainState = function(game){
-		score = 0;
+		curScore = 0;
 	}
 	mainState.prototype = {
 		preload: function(){
@@ -32,7 +32,7 @@
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.game.state.start('over', true, false, score);
+				this.game.state.start('over', true, false, curScore);
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -75,8 +75,8 @@
 				if (i != opening && i != opening + 1 & i != opening + 2)
 					this.addPipe(750, i * 50);
 
-			score ++
-			this.labelScore.text = score;
+			curScore ++
+			this.labelScore.text = curScore;
 		},
 
 		hitPipe: function(){
