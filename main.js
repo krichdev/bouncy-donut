@@ -1,6 +1,4 @@
-
-	//Main Menu with click to start message
-	var mainMenu = {
+var mainMenu = {
 		preload: function(){
 			game.stage.backgroundColor = '#71c5cf';
 			game.load.image('donut', 'assets/img/donut.png');
@@ -114,18 +112,15 @@
 
 			game.time.events.remove(this.timer);
 
-			game.input.onTap.removeAll();
-			game.input.onDown.removeAll();
-
-			this.pipes.forEach(function(p){p.body.velocity.x = 0;}, this);
+			this.pipes.forEach(function(p){
+				p.body.velocity.x = 0;
+			}, this);
 		},
 
 	};
 
 	var gameOver = {
-		init: function(score){
-			console.log(score);
-		},
+		
 		preload: function(){
 			game.load.image('gameover', 'assets/img/gameover.png');
 		},
@@ -137,6 +132,8 @@
 			game.input.onTap.add(this.restartGame, this);
 
 			game.add.tween(this.overTitle).to({y: 90}, 900).start();
+
+			game.add.text(20, 20, +score, {font: "30px Arial", fill: "#ffffff"});
 
 		},
 
@@ -153,4 +150,3 @@
 	game.state.add('over', gameOver);
 
 	game.state.start('menu');
-
