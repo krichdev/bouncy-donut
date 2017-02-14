@@ -1,20 +1,25 @@
+
 	//Main Menu with click to start message
 	var mainMenu = {
 		preload: function(){
 			game.stage.backgroundColor = '#71c5cf';
 			game.load.image('donut', 'assets/img/donut.png');
+			game.load.image('title', 'assets/img/title.png');
 		},
 
 		create: function(){
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			this.donut = game.add.sprite(200, 0, 'donut');
+			this.title = game.add.sprite(200, -200, 'title');
+
+			this.donut = game.add.sprite(325, -60, 'donut');
 
 			game.physics.arcade.enable(this.donut);
 
 			game.input.onTap.add(this.playGame, this);
 
-			game.add.tween(this.donut).to({y: 245}, 1000).start();
+			game.add.tween(this.title).to({y: 90}, 900).start();
+			game.add.tween(this.donut).to({y: 245}, 600).start();
 		},
 
 		playGame: function(){
@@ -58,7 +63,7 @@
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.game.state.start('menu');
+				this.game.state.start('over');
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -75,10 +80,6 @@
 			if (this.donut.alive == false)
 				return;
 		},
-
-		// restartGame: function(){
-		// 	game.state.start('main');
-		// },
 
 		addPipe: function(x, y) {
 			var pipe = game.add.sprite(x, y, 'pipe');
@@ -116,10 +117,32 @@
 			game.input.onTap.removeAll();
 			game.input.onDown.removeAll();
 
-			this.pipes.forEach(function(p){
-				p.body.velocity.x = 0;
-			}, this);
+			this.pipes.forEach(function(p){p.body.velocity.x = 0;}, this);
 		},
+
+	};
+
+	var gameOver = {
+		init: function(score){
+			console.log(score);
+		},
+		preload: function(){
+			game.load.image('gameover', 'assets/img/gameover.png');
+		},
+
+		create: function(){
+
+			this.overTitle = game.add.sprite(200, -200, 'gameover');
+
+			game.input.onTap.add(this.restartGame, this);
+
+			game.add.tween(this.overTitle).to({y: 90}, 900).start();
+
+		},
+
+		restartGame: function(){
+			this.game.state.start('menu');
+		},	
 
 	};
 
@@ -127,7 +150,7 @@
 
 	game.state.add('main', mainState);
 	game.state.add('menu', mainMenu);
-	game.state.add('over'. gameOver);
+	game.state.add('over', gameOver);
 
 	game.state.start('menu');
 
