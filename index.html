@@ -13,5 +13,15 @@
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="js/gameover.js"></script>
 
+<script>
+	var game = new Phaser.Game(800, 600);
+
+	game.state.add('main', mainState);
+	game.state.add('menu', mainMenu);
+	game.state.add('over', gameOver);
+
+	game.state.start('menu');
+</script>
+
 </body>
 </html>

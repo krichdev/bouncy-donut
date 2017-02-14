@@ -1,30 +1,3 @@
-var mainMenu = {
-		preload: function(){
-			game.stage.backgroundColor = '#71c5cf';
-			game.load.image('donut', 'assets/img/donut.png');
-			game.load.image('title', 'assets/img/title.png');
-		},
-
-		create: function(){
-			game.physics.startSystem(Phaser.Physics.ARCADE);
-
-			this.title = game.add.sprite(200, -200, 'title');
-
-			this.donut = game.add.sprite(325, -60, 'donut');
-
-			game.physics.arcade.enable(this.donut);
-
-			game.input.onTap.add(this.playGame, this);
-
-			game.add.tween(this.title).to({y: 90}, 900).start();
-			game.add.tween(this.donut).to({y: 245}, 600).start();
-		},
-
-		playGame: function(){
-			this.game.state.start('main');
-		},	
-
-	}
 	//Main game state
 	var mainState = {
 		preload: function(){
@@ -61,7 +34,7 @@ var mainMenu = {
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.game.state.start('over');
+				this.restartGame();
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -77,6 +50,10 @@ var mainMenu = {
 
 			if (this.donut.alive == false)
 				return;
+		},
+
+		restartGame: function(){
+			game.state.start('over');
 		},
 
 		addPipe: function(x, y) {
@@ -119,34 +96,3 @@ var mainMenu = {
 
 	};
 
-	var gameOver = {
-		
-		preload: function(){
-			game.load.image('gameover', 'assets/img/gameover.png');
-		},
-
-		create: function(){
-
-			this.overTitle = game.add.sprite(200, -200, 'gameover');
-
-			game.input.onTap.add(this.restartGame, this);
-
-			game.add.tween(this.overTitle).to({y: 90}, 900).start();
-
-			game.add.text(20, 20, +score, {font: "30px Arial", fill: "#ffffff"});
-
-		},
-
-		restartGame: function(){
-			this.game.state.start('menu');
-		},	
-
-	};
-
-	var game = new Phaser.Game(800, 600);
-
-	game.state.add('main', mainState);
-	game.state.add('menu', mainMenu);
-	game.state.add('over', gameOver);
-
-	game.state.start('menu');
