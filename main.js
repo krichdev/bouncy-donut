@@ -1,5 +1,5 @@
 	var mainState = function(game){
-		curScore = 0;
+		score = 0;
 	}
 	mainState.prototype = {
 		preload: function(){
@@ -32,7 +32,7 @@
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.game.state.start('over', true, false, curScore);
+				this.game.state.start('over', true, false, score);
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -49,10 +49,6 @@
 			if (this.donut.alive == false)
 				return;
 		},
-
-		// restartGame: function(){
-		// 	game.state.start('over', score);
-		// },
 
 		addPipe: function(x, y) {
 			var pipe = game.add.sprite(x, y, 'pipe');
@@ -72,11 +68,11 @@
 			var opening = Math.floor(Math.random()* 5) + 1;
 
 			for (var i = 0; i < 12; i++)
-				if (i != opening && i != opening + 1 & i != opening + 2)
+				if (i != opening && i != opening + 1 && i != opening + 2)
 					this.addPipe(750, i * 50);
 
-			curScore ++
-			this.labelScore.text = curScore;
+			score ++
+			this.labelScore.text = score;
 		},
 
 		hitPipe: function(){
