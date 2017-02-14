@@ -58,7 +58,7 @@
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.restartGame();
+				this.game.state.start('menu');
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -76,9 +76,9 @@
 				return;
 		},
 
-		restartGame: function(){
-			game.state.start('main');
-		},
+		// restartGame: function(){
+		// 	game.state.start('main');
+		// },
 
 		addPipe: function(x, y) {
 			var pipe = game.add.sprite(x, y, 'pipe');
@@ -112,6 +112,9 @@
 			this.donut.alive = false;
 
 			game.time.events.remove(this.timer);
+
+			game.input.onTap.removeAll();
+			game.input.onDown.removeAll();
 
 			this.pipes.forEach(function(p){
 				p.body.velocity.x = 0;
