@@ -1,14 +1,14 @@
-	//Main game state
-	var mainState = {
+	var mainState = function(game){
+		score = 0;
+	}
+	mainState.prototype = {
 		preload: function(){
-			game.load.image('donut', 'assets/img/donut.png');
 			game.load.image('pipe', 'assets/img/pipe.png');
 		},
 
 		create: function() {
-			game.stage.backgroundColor = '#71c5cf';
-
-			game.physics.startSystem(Phaser.Physics.ARCADE);
+			
+			// game.physics.startSystem(Phaser.Physics.ARCADE);
 
 			this.donut = game.add.sprite(150, 245, 'donut');
 
@@ -24,9 +24,7 @@
 
 			this.pipes = game.add.group();
 
-			this.timer = game.time.events.loop(1500, this.addPipeColumn, this);
-
-			this.score = 0; 
+			this.timer = game.time.events.loop(1500, this.addPipeColumn, this); 
 
 			this.labelScore = game.add.text(20, 20, "0",
 				{font: "30px Arial", fill: "#ffffff"});
@@ -77,8 +75,8 @@
 				if (i != opening && i != opening + 1 & i != opening + 2)
 					this.addPipe(750, i * 50);
 
-			this.score += 1;
-			this.labelScore.text = this.score;
+			score ++
+			this.labelScore.text = score;
 		},
 
 		hitPipe: function(){

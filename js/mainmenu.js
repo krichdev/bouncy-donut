@@ -3,10 +3,9 @@ var mainMenu = function(game){}
 mainMenu.prototype = {
 	preload: function(){
 		game.stage.backgroundColor = '#71c5cf';
-		this.game.load.image('donut', 'assets/img/donut.png')
-		this.game.load.image('pipe', 'assests/img/pipe.png')
-		this.game.load.image('title', 'assets/img/title.png')
-		this.game.load.image('gameover', 'assets/img/gameover.png')
+		this.game.load.image('donut', 'assets/img/donut.png');
+		this.game.load.image('title', 'assets/img/title.png');
+		this.game.load.image('gameover', 'assets/img/gameover.png');
 	},
 
 	create: function(){
