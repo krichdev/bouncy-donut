@@ -1,3 +1,4 @@
+	//Main Menu with click to start message
 	var mainMenu = {
 		preload: function(){
 			game.stage.backgroundColor = '#71c5cf';
@@ -21,7 +22,7 @@
 		},	
 
 	}
-
+	//Main game state
 	var mainState = {
 		preload: function(){
 			game.load.image('donut', 'assets/img/donut.png');
@@ -33,7 +34,7 @@
 
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
-			this.donut = game.add.sprite(200, 245, 'donut');
+			this.donut = game.add.sprite(150, 245, 'donut');
 
 			game.physics.arcade.enable(this.donut);
 
@@ -47,7 +48,7 @@
 
 			this.pipes = game.add.group();
 
-			this.timer = game.time.events.loop(1750, this.addPipeColumn, this);
+			this.timer = game.time.events.loop(1500, this.addPipeColumn, this);
 
 			this.score = 0; 
 
@@ -96,9 +97,9 @@
 		addPipeColumn: function() {
 			var opening = Math.floor(Math.random()* 5) + 1;
 
-			for (var i = 0; i < 6; i++)
-				if (i != opening && i != opening + 1)
-					this.addPipe(400, i * 100);
+			for (var i = 0; i < 12; i++)
+				if (i != opening && i != opening + 1 & i != opening + 2)
+					this.addPipe(750, i * 50);
 
 			this.score += 1;
 			this.labelScore.text = this.score;
@@ -122,7 +123,8 @@
 	var game = new Phaser.Game(800, 600);
 
 	game.state.add('main', mainState);
-	game.state.add('menu', mainMenu)
+	game.state.add('menu', mainMenu);
+	game.state.add('over'. gameOver);
 
 	game.state.start('menu');
 
