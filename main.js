@@ -32,7 +32,7 @@
 
 		update: function() {
 			if (this.donut.y < 0 || this.donut.y > 600)
-				this.restartGame();
+				this.game.state.start('over', true, false, score);
 
 			game.physics.arcade.overlap(this.donut, this.pipes, this.hitPipe, null, this);
 
@@ -50,9 +50,9 @@
 				return;
 		},
 
-		restartGame: function(){
-			game.state.start('over');
-		},
+		// restartGame: function(){
+		// 	game.state.start('over', score);
+		// },
 
 		addPipe: function(x, y) {
 			var pipe = game.add.sprite(x, y, 'pipe');

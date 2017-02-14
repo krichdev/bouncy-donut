@@ -1,6 +1,10 @@
 var gameOver = function(game){}
 
 gameOver.prototype = {
+	init: function(score){
+		console.log(score);
+	},
+
 	create: function(){
 
 		this.overTitle = game.add.sprite(200, -200, 'gameover');
@@ -9,7 +13,9 @@ gameOver.prototype = {
 
 		game.add.tween(this.overTitle).to({y: 90}, 900).start();
 
-		// game.add.text(20, 20, +score, {font: "30px Arial", fill: "#ffffff"});
+		this.finalScore = game.add.text(325, -250, +score, {font: "30px Arial", fill: "#ffffff"});
+
+		game.add.tween(this.finalScore).to({y: 250}, 900).start();
 
 	},
 
