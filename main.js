@@ -1,5 +1,5 @@
 	var mainState = function(game){
-		score = 0;
+		
 	}
 	mainState.prototype = {
 		preload: function(){
@@ -26,6 +26,7 @@
 
 			this.timer = game.time.events.loop(1500, this.addPipeColumn, this); 
 
+			score = 0;
 			this.labelScore = game.add.text(20, 20, "0",
 				{font: "30px Arial", fill: "#ffffff"});
 		},
@@ -86,6 +87,7 @@
 			this.pipes.forEach(function(p){
 				p.body.velocity.x = 0;
 			}, this);
+
 		},
 
 	};

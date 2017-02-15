@@ -1,5 +1,6 @@
 var mainMenu = function(game){}
 
+
 mainMenu.prototype = {
 	preload: function(){
 		game.stage.backgroundColor = '#71c5cf';

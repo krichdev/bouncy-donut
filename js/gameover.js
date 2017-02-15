@@ -3,7 +3,7 @@ var gameOver = function(game){
 
 gameOver.prototype = {
 	init: function(score){
-		// console.log(curScore);
+
 	},
 
 	create: function(){
