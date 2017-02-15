@@ -26,10 +26,10 @@ gameOver.prototype = {
 	setHighScore: function(){
 		if(score > localStorage.highscore){
 			localStorage.highscore = score;
-			this.newHighScore = game.add.text(215, -250, "New High Score! " +score, {font: "30px Arial", fill: "#ffffff"});
+			this.newHighScore = game.add.text(125, -250, "New High Score! " +score, {font: "30px Press Start 2P", fill: "red"});
 			game.add.tween(this.newHighScore).to({y: 250}, 1000).start();
 		} else {
-			this.finalScore = game.add.text(325, -250, +score, {font: "30px Arial", fill: "#ffffff"});
+			this.finalScore = game.add.text(325, -250, +score, {font: "30px Press Start 2P", fill: "#ffffff"});
 			game.add.tween(this.finalScore).to({y: 250}, 900).start();
 		}
 	},

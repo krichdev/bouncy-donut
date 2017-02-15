@@ -28,7 +28,7 @@
 
 			score = 0;
 			this.labelScore = game.add.text(20, 20, "0",
-				{font: "30px Arial", fill: "#ffffff"});
+				{font: "30px Press Start 2P", fill: "#ffffff"});
 		},
 
 		update: function() {
@@ -70,7 +70,7 @@
 
 			for (var i = 0; i < 24; i++)
 				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3)
-					this.addPipe(750, i * 25);
+					this.addPipe(730, i * 25);
 
 			score ++
 			this.labelScore.text = score;

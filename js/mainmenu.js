@@ -22,6 +22,11 @@ mainMenu.prototype = {
 
 		game.add.tween(this.title).to({y: 90}, 900).start();
 		game.add.tween(this.donut).to({y: 245}, 600).start();
+
+		this.instructions = game.add.text(145, -250, "Click To Start", {font: "30px Press Start 2P", fill: "white"});
+
+		game.add.tween(this.instructions).to({y: 325}, 900).start();
+
 	},
 
 	playGame: function(){
