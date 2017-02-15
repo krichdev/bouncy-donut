@@ -1,4 +1,5 @@
 var gameOver = function(game){
+	localStorage.highscore = 0;
 }
 
 gameOver.prototype = {
@@ -18,10 +19,17 @@ gameOver.prototype = {
 
 		game.add.tween(this.finalScore).to({y: 250}, 900).start();
 
+		this.setHighScore();
+
 	},
 
 	restartMenu: function(){
 		this.game.state.start('menu');
 	},	
+
+	setHighScore: function(){
+		if(score > localStorage.highscore)
+			localStorage.highscore = score;
+	}
 
 }
