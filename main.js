@@ -66,11 +66,11 @@
 		},
 
 		addPipeColumn: function() {
-			var opening = Math.floor(Math.random()* 5) + 1;
+			var opening = Math.floor(Math.random()* 12) + 1;
 
-			for (var i = 0; i < 12; i++)
-				if (i != opening && i != opening + 1 && i != opening + 2)
-					this.addPipe(750, i * 50);
+			for (var i = 0; i < 24; i++)
+				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3)
+					this.addPipe(750, i * 25);
 
 			score ++
 			this.labelScore.text = score;
