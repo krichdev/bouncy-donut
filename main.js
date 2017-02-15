@@ -14,7 +14,7 @@
 
 			game.physics.arcade.enable(this.donut);
 
-			this.donut.body.gravity.y = 1000;
+			this.donut.body.gravity.y = 1300;
 
 			var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
