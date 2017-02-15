@@ -1,8 +1,8 @@
-	var mainState = function(game){
-		
-	}
-	mainState.prototype = {
-		preload: function(){
+var easyLevel = function(game){}
+
+
+easyLevel.prototype = {
+	preload: function(){
 			game.load.image('pipe', 'assets/img/pipe.png');
 		},
 
@@ -43,13 +43,12 @@
 		},
 
 		jump: function(){
-			if (this.donut.alive == false)
-				return;
-
 			this.donut.body.velocity.y = -350;
 
 			game.add.tween(this.donut).to({angle: -15}, 100).start();
 
+			if (this.donut.alive == false)
+				return;
 		},
 
 		addPipe: function(x, y) {
@@ -70,7 +69,7 @@
 			var opening = Math.floor(Math.random()* 12) + 1;
 
 			for (var i = 0; i < 24; i++)
-				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3)
+				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3 && i != opening + 4)
 					this.addPipe(730, i * 25);
 
 			score ++
@@ -90,6 +89,4 @@
 			}, this);
 
 		},
-
-	};
-
+}

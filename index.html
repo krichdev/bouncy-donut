@@ -11,6 +11,7 @@
 <script type="text/javascript" src="phaser/v2/build/phaser.min.js"></script>
 <script type="text/javascript" src="js/mainmenu.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="js/easyLevel.js"></script>
 <script type="text/javascript" src="js/gameover.js"></script>
 
 <script>
@@ -18,6 +19,7 @@
 
 	game.state.add('main', mainState);
 	game.state.add('menu', mainMenu);
+	game.state.add('easy', easyLevel);
 	game.state.add('over', gameOver);
 
 	game.state.start('menu');
