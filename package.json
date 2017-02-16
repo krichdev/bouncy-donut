@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/krichdev/game-clone.git"
+    "url": "git+https://github.com/krichdev/bouncy-donut.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/krichdev/game-clone/issues"
+    "url": "https://github.com/krichdev/bouncy-donut/issues"
   },
-  "homepage": "https://github.com/krichdev/game-clone#readme",
+  "homepage": "https://github.com/krichdev/bouncy-donut#readme",
   "dependencies": {
     "browser-sync": "^2.18.7"
   }
