@@ -2,10 +2,6 @@
 		
 	}
 	mainState.prototype = {
-		preload: function(){
-			game.load.image('pipe', 'assets/img/pipe.png');
-		},
-
 		create: function() {
 			
 			// game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -69,10 +65,11 @@
 		addPipeColumn: function() {
 			var opening = Math.floor(Math.random()* 12) + 1;
 
-			for (var i = 0; i < 24; i++)
+			for (var i = 0; i < 24; i++){
 				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3)
 					this.addPipe(730, i * 25);
-
+			}
+		
 			score ++
 			this.labelScore.text = score;
 		},

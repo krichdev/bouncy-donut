@@ -43,12 +43,13 @@ easyLevel.prototype = {
 		},
 
 		jump: function(){
+			if (this.donut.alive == false)
+				return;
+
 			this.donut.body.velocity.y = -350;
 
 			game.add.tween(this.donut).to({angle: -15}, 100).start();
 
-			if (this.donut.alive == false)
-				return;
 		},
 
 		addPipe: function(x, y) {
