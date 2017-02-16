@@ -25,6 +25,9 @@
 			score = 0;
 			this.labelScore = game.add.text(20, 20, "0",
 				{font: "30px Press Start 2P", fill: "#ffffff"});
+
+			this.instructions = game.add.text(275, 200, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
+			game.add.tween(this.instructions).to({x: -550}, 2750).start();
 		},
 
 		update: function() {

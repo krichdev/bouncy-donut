@@ -19,9 +19,9 @@ mainMenu.prototype = {
 	create: function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
-		this.title = game.add.sprite(200, -200, 'title');
+		this.title = game.add.sprite(250, -200, 'title');
 
-		this.donut = game.add.sprite(325, -60, 'donut');
+		this.donut = game.add.sprite(375, -60, 'donut');
 
 		game.physics.arcade.enable(this.donut);
 
@@ -30,17 +30,17 @@ mainMenu.prototype = {
 		game.add.tween(this.title).to({y: 90}, 900).start();
 		game.add.tween(this.donut).to({y: 245}, 600).start();
 
-		// this.instructions = game.add.text(145, -250, "Click To Start", {font: "30px Press Start 2P", fill: "white"});
-		// game.add.tween(this.instructions).to({y: 325}, 900).start();
+		// this.instructions = game.add.text(175, -250, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
+		// game.add.tween(this.instructions).to({y: 425}, 900).start();
 		//Setting easy button, display, and adding click event
 		var easyButton;
- 		easyButton = game.add.button(200, 325, 'easybutton');
+ 		easyButton = game.add.button(250, 325, 'easybutton');
 
  		easyButton.inputEnabled = true;
 		easyButton.events.onInputDown.add(this.easyMode, this);
 
 		var hardButton;
- 		hardButton = game.add.button(400, 325, 'hardbutton');
+ 		hardButton = game.add.button(450, 325, 'hardbutton');
 
  		hardButton.inputEnabled = true;
 		hardButton.events.onInputDown.add(this.playGame, this);

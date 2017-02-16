@@ -1,3 +1,9 @@
+* {
+	margin: 0 auto;
+}
+
 body {
 	font-family: 'Press Start 2P', arial;
+	background: url('assets/img/donutsbg.jpg') no-repeat center;
+
 }
