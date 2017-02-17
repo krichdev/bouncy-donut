@@ -5,6 +5,7 @@
 		create: function() {
 			
 			// game.physics.startSystem(Phaser.Physics.ARCADE);
+			game.paused = true
 
 			this.donut = game.add.sprite(150, 245, 'donut');
 
@@ -26,8 +27,7 @@
 			this.labelScore = game.add.text(20, 20, "0",
 				{font: "30px Press Start 2P", fill: "#ffffff"});
 
-			this.instructions = game.add.text(275, 200, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
-			game.add.tween(this.instructions).to({x: -550}, 2750).start();
+			this.instructions = game.add.text(275, 250, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
 		},
 
 		update: function() {
@@ -38,8 +38,11 @@
 
 			if (this.donut.angle < 15)
 				this.donut.angle += 1;
-
 		},
+
+		// unpause: function(){
+		// 	game.paused = false;
+		// }
 
 		jump: function(){
 			if (this.donut.alive == false)
@@ -48,6 +51,10 @@
 			this.donut.body.velocity.y = -350;
 
 			game.add.tween(this.donut).to({angle: -15}, 100).start();
+
+			game.paused = false;
+
+			this.instructions.destroy();
 
 		},
 
@@ -63,6 +70,7 @@
 			//removing pipes once the get to end of the canvas
 			pipe.checkWorldBounds = true;
 			pipe.outOfBoundsKill = true;
+
 		},
 
 		addPipeColumn: function() {
@@ -72,9 +80,10 @@
 				if (i != opening && i != opening + 1 && i != opening + 2 && i != opening + 3)
 					this.addPipe(730, i * 25);
 			}
-		
+
 			score ++
 			this.labelScore.text = score;
+		
 		},
 
 		hitPipe: function(){
