@@ -28,6 +28,7 @@
 				{font: "30px Press Start 2P", fill: "#ffffff"});
 
 			this.instructions = game.add.text(275, 250, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
+
 		},
 
 		update: function() {
@@ -38,11 +39,9 @@
 
 			if (this.donut.angle < 15)
 				this.donut.angle += 1;
+
 		},
 
-		// unpause: function(){
-		// 	game.paused = false;
-		// }
 
 		jump: function(){
 			if (this.donut.alive == false)
