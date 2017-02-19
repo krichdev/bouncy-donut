@@ -1,2 +1,11 @@
 # Bouncy Donut
-A flappy bird clone with JavaScript and the Phaser.io Library
+A clone of the popular game Flappy Bird. 
+
+Languages used to produce this project:
+* HTML
+* CSS
+* JavaScript
+* JQuery
+* Phaser.js
+
+Play this game at http://www.helloimkyle.com/bouncy-donut
