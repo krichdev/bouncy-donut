@@ -9,6 +9,7 @@ easyLevel.prototype = {
 		create: function() {
 			
 			// game.physics.startSystem(Phaser.Physics.ARCADE);
+			game.paused = true
 
 			this.donut = game.add.sprite(150, 245, 'donut');
 
@@ -31,7 +32,6 @@ easyLevel.prototype = {
 				{font: "30px Press Start 2P", fill: "#ffffff"});
 
 			this.instructions = game.add.text(275, 200, "Click or Hit Spacebar to BOUNCE", {font: "14px Press Start 2P", fill: "white"});
-			game.add.tween(this.instructions).to({x: -550}, 2750).start();
 		},
 
 		update: function() {
@@ -52,6 +52,10 @@ easyLevel.prototype = {
 			this.donut.body.velocity.y = -350;
 
 			game.add.tween(this.donut).to({angle: -15}, 100).start();
+
+			game.paused = false;
+
+			this.instructions.destroy();
 
 		},
 
