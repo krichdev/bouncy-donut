@@ -1,8 +1,10 @@
 # Bouncy Donut
+
 ![Screenshot of Game Menu]
 (https://raw.githubusercontent.com/krichdev/krichdev.github.io/master/bouncy-donut-screenshot.png)
 
-## A clone of the popular game Flappy Bird. 
+## A Flappy Bird Clone
+This project was a clone of the popular mobile game called Flappy Bird.
 
 ### Languages used to produce this project:
 * HTML
@@ -35,5 +37,5 @@ addPipeColumn: function() {
  ```
  Creating the holes to "bounce" through was a difficult challenge. To solve this challenge, I split the canvas vertically into 25px blocks. Using a For Loop, I iterated through the 24 blocks of the "pipe" and then created an "opening" variable that would then get skipped in the loop when printing the pipe images.
  
- ## Features to add
- Moving forward with the project I would like to fix the scoring issue, as well as add an option so select different donut characters to play the game with.
+## Features to add
+Moving forward with the project I would like to fix the scoring issue, as well as add an option so select different donut characters to play the game with.
